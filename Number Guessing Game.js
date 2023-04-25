@@ -1,19 +1,25 @@
 let number = Math.floor(Math.random() * 101);
-let lives = 100;
+let lives = 10;
 let guess; 
 
 do{
-  guess = Number.parseInt(prompt("What is your Guess: "))
-  if(number === guess){
-    break;
-  } else{
-    if(guess>number){
-      console.log("Try Again! Your guess is greater than the number!");
-    } else if(guess<number){
-      console.log("Try Again! Your guess is less than the number!");
-    }
+  guess = Number.parseInt(prompt("What is your Guess: "));
+  
+  if (isNaN(guess) || guess < 0 || guess > 100) {
+    console.log("Invalid input. Please enter a number between 0 and 100.");
+    continue;
   }
-  lives -= 1;
-}while(number !== guess);
+  
+  if(number === guess){
+    console.log(`You guessed the number! The number was ${number}. You had ${lives} lives left.`);
+    break;
+  } 
+  else {
+    lives--;
+    console.log(`Try again! Your guess is ${guess > number ? 'greater' : 'less'} than the number!`);
+  }
+}while(lives > 0);
 
-console.log(`You guessed the number! The number was ${number}. You had ${lives} lives left.`)
+if(lives === 0) {
+  console.log(`You lose! You have ${lives} lives left! The number was ${number}.`);
+}
