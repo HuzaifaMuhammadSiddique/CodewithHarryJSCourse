@@ -25,3 +25,13 @@ if(age<0){
 } else{
   age<18 ? alert("You cannot drive!") : alert("You can drive!");
 }
+
+// QUESTION 4
+let number = Number.parseInt(prompt("Enter a number: "));
+if(number>4){
+location.href = "https://google.com";
+}
+
+// QUESTION 5
+let color = prompt("Enter a color: ");
+document.body.style.background = color;
